@@ -105,3 +105,92 @@ The Employee table containing employee data for a company is described as follow
 select name from employee where salary >2000 and months<10 order by employee_id;
 
 ===============================================================================================================================================================================================================
+16) Type of Triangle
+
+Write a query identifying the type of each record in the TRIANGLES table using its three side lengths. Output one of the following statements for each record in the table:
+
+Equilateral: It's a triangle with  sides of equal length.
+Isosceles: It's a triangle with  sides of equal length.
+Scalene: It's a triangle with  sides of differing lengths.
+Not A Triangle: The given values of A, B, and C don't form a triangle.
+Input Format
+
+The TRIANGLES table is described as follows:
+
+
+select 
+case
+when (b+c)<=a or (a+c)<=b or (a+b)<=c then "Not A Triangle"
+when a=b and b=c then  "Equilateral"
+when a=b or b=c or a=c then "Isosceles"
+
+when a!=b!=c then "Scalene"
+
+end 
+from triangles;
+===============================================================================================================================================================================================================
+17) Population Census
+
+Given the CITY and COUNTRY tables, query the sum of the populations of all cities where the CONTINENT is 'Asia'.
+
+Note: CITY.CountryCode and COUNTRY.Code are matching key columns.
+
+Input Format
+
+The CITY and COUNTRY tables are described as follows:
+
+
+select sum(city.population) from city
+inner join country
+on city.countrycode = country.code
+group by country.continent
+having country.CONTINENT='Asia';
+
+select sum(city.population) from city
+inner join country
+on city.countrycode = country.code
+where country.CONTINENT='Asia';
+
+===============================================================================================================================================================================================================
+18) African Cities
+
+Given the CITY and COUNTRY tables, query the names of all cities where the CONTINENT is 'Africa'.
+
+Note: CITY.CountryCode and COUNTRY.Code are matching key columns.
+
+Input Format
+
+The CITY and COUNTRY tables are described as follows:
+
+select city.name from city
+inner join country 
+on city.countrycode= country.code
+where continent='africa';
+
+===============================================================================================================================================================================================================
+19) Average Population of Each Continent
+Given the CITY and COUNTRY tables, query the names of all the continents (COUNTRY.Continent) and their respective average city populations (CITY.Population) rounded down to the nearest integer.
+
+Note: CITY.CountryCode and COUNTRY.Code are matching key columns.
+
+Input Format
+
+The CITY and COUNTRY tables are described as follows:
+
+select continent,floor(avg(city.population)) from city
+inner join country
+on city.countrycode = country.code
+group by continent;
+
+
+===============================================================================================================================================================================================================
+20) Revising the Select Query II
+
+
+Query the NAME field for all American cities in the CITY table with populations larger than 120000. The CountryCode for America is USA.
+
+The CITY table is described as follows:
+
+select name from city where population>120000 and countrycode="usa";
+
+===============================================================================================================================================================================================================
