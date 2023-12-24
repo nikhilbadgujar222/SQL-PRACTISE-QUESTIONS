@@ -194,3 +194,48 @@ The CITY table is described as follows:
 select name from city where population>120000 and countrycode="usa";
 
 ===============================================================================================================================================================================================================
+
+21) Revising Aggregations - The Count Function
+
+
+Query a count of the number of cities in CITY having a Population larger than 100000
+select count(name) from city where population>100000;
+
+===============================================================================================================================================================================================================
+
+22) Revising Aggregations - The Sum Function
+    Query the total population of all cities in CITY where District is California.
+
+    select sum(population) from city where district= "California";
+
+===============================================================================================================================================================================================================
+
+23) Revising Aggregations - Averages
+    Query the average population of all cities in CITY where District is California.
+    select avg(population) from city where district="california";  
+
+===============================================================================================================================================================================================================
+24) Average Population
+    Query the average population for all cities in CITY, rounded down to the nearest integer.
+    select floor(avg(population)) from city;
+
+===============================================================================================================================================================================================================
+
+25) Japan Population
+    Query the sum of the populations for all Japanese cities in CITY. The COUNTRYCODE for Japan is JPN.
+    select sum(population) from city where countrycode="jpn";
+
+===============================================================================================================================================================================================================
+26) Population Density Difference
+    Query the difference between the maximum and minimum populations in CITY.
+    select max(population) - min(population) from city;
+
+===============================================================================================================================================================================================================
+27) Samantha was tasked with calculating the average monthly salaries for all employees in the EMPLOYEES table, but did not realize her keyboard's  key was broken until after completing the calculation. She 
+wants your help finding the difference between her miscalculation (using salaries with any zeros removed), and the actual average salary.
+
+Write a query calculating the amount of error (i.e.:  average monthly salaries), and round it up to the next integer.
+select round(avg(salary)) - round(avg(replace(salary,0,""))) 
+from employees;
+
+===============================================================================================================================================================================================================
