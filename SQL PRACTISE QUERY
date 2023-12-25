@@ -239,3 +239,89 @@ select round(avg(salary)) - round(avg(replace(salary,0,"")))
 from employees;
 
 ===============================================================================================================================================================================================================
+28) Top Earners
+   We define an employee's total earnings to be their monthly  worked, and the maximum total earnings to be the maximum total earnings for any employee in the Employee table. Write a query to 
+  find the maximum total earnings for all employees as well as the total number of employees who have maximum total earnings. Then print these values as  space-separated integers.
+
+Input Format
+
+The Employee table containing employee data for a company is described as follows:
+
+  select max(salary * months),count(salary * months) from employee
+  group by (salary * months)
+  order by (salary * months) desc
+  limit 1;
+ or===>
+
+ select max(salary * months),count(*) from employee
+ where (salary * months) = (select max(salary * months) as m from employee)  ;
+
+===============================================================================================================================================================================================================
+29) Weather Observation Station 2
+    Query the following two values from the STATION table:
+
+  The sum of all values in LAT_N rounded to a scale of  decimal places.
+  The sum of all values in LONG_W rounded to a scale of  decimal places.
+  Input Format
+
+  The STATION table is described as follows:
+
+  select round(sum(lat_n),2), round(sum(long_w),2) from station;
+
+===============================================================================================================================================================================================================
+
+30) Weather Observation Station 13
+    Query the sum of Northern Latitudes (LAT_N) from STATION having values greater than  38.7880 and less than 137.2345. Truncate your answer to 4 decimal places.
+
+    Input Format
+
+    The STATION table is described as follows:
+    select round(sum(lat_n),4) from station 
+    where lat_n > 38.7880 and lat_n < 137.2345;
+
+===============================================================================================================================================================================================================
+
+31) Weather Observation Station 14
+
+   Query the greatest value of the Northern Latitudes (LAT_N) from STATION that is less than 137.2345. Truncate your answer to  4 decimal places.
+
+   Input Format
+   The STATION table is described as follows:
+   select round(max(lat_n),4) from station 
+    where lat_n < 137.2345;
+
+===============================================================================================================================================================================================================
+
+32) The Report
+    ou are given two tables: Students and Grades. Students contains three columns ID, Name and Marks.
+    Grades contains the following data:
+    Ketty gives Eve a task to generate a report containing three columns: Name, Grade and Mark. Ketty doesn't want the NAMES of those students who received a grade lower than 8. The report must be in descending order by grade -- i.e. 
+    higher grades are entered first. If there is more than one student with the same grade (8-10) assigned to them, order those particular students by their name alphabetically. Finally, if the grade is lower than 8, use "NULL" as their 
+    name and list them by their grades in descending order. If there is more than one student with the same grade (1-7) assigned to them, order those particular students by their marks in ascending order.
+
+    Write a query to help Eve.
+    
+
+
+select 
+case 
+when marks < 70 then null else name end , 
+
+
+case 
+when marks between 90 and 100 then 10 
+when marks between 80 and 89 then 9 
+when marks between 70 and 79 then 8 
+when marks between 60 and 69 then 7 
+when marks between 50 and 59 then 6 
+when marks between 40 and 49 then 5 
+when marks between 30 and 39 then 4 
+when marks between 20 and 29 then 3
+when marks between 10 and 19 then 2 
+when marks between 0 and 9 then 1 end as grade , 
+
+marks from students order by grade desc, name
+
+===============================================================================================================================================================================================================
+
+33) 
