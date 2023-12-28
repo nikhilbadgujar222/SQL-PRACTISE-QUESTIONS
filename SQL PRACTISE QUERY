@@ -324,4 +324,88 @@ marks from students order by grade desc, name
 
 ===============================================================================================================================================================================================================
 
-33) 
+33) Weather Observation Station 15
+    Query the Western Longitude (LONG_W) for the largest Northern Latitude (LAT_N) in STATION that is less than <137.2345. Round your answer to  4 decimal places.
+
+   Input Format
+
+The STATION table is described as follows:
+  
+select round(long_w,4) from station 
+where lat_n = (select max(lat_n) from  station where lat_n<137.2345 ); 
+================================================================================================================================================================================================================
+
+34)  Weather Observation Station 16
+     Query the smallest Northern Latitude (LAT_N) from STATION that is greater than  38.7780. Round your answer to  decimal places.
+
+     Input Format
+
+     The STATION table is described as follows:
+
+     select round(min(lat_n),4) from station 
+     where lat_n > 38.7780;
+
+================================================================================================================================================================================================================
+
+35) Weather Observation Station 17
+
+    Query the Western Longitude (LONG_W)where the smallest Northern Latitude (LAT_N) in STATION is greater than  38.7780. Round your answer to 4  decimal places.
+
+Input Format
+
+The STATION table is described as follows:
+ select round(long_w,4) from station
+
+where lat_n = (select min(lat_n) from station where lat_n > 38.7780 );
+
+================================================================================================================================================================================================================
+
+36) Weather Observation Station 18
+    Consider p1(a,b)  and p2(c,d)  to be two points on a 2D plane.
+
+ happens to equal the minimum value in Northern Latitude (LAT_N in STATION).
+ happens to equal the minimum value in Western Longitude (LONG_W in STATION).
+ happens to equal the maximum value in Northern Latitude (LAT_N in STATION).
+ happens to equal the maximum value in Western Longitude (LONG_W in STATION).
+Query the Manhattan Distance between points  and  and round it to a scale of  decimal places.
+
+Input Format
+
+The STATION table is described as follows:
+
+SELECT round(( max(lat_n)- min(lat_n) ) +
+        ( max(long_w)- min(long_w) )  ,4) as manhattan_distance
+from station ;
+
+================================================================================================================================================================================================================
+
+37) Weather Observation Station 19
+
+   Consider p1(a,c) and p2(b,d) to be two points on a 2D plane where  are the respective minimum and maximum values of Northern Latitude (LAT_N) and  are the respective minimum and maximum values of Western Longitude (LONG_W) in STATION.
+
+Query the Euclidean Distance between points  and  and format your answer to display  decimal digits.
+
+Input Format
+
+The STATION table is described as follows:
+
+SELECT round(ST_DISTANCE(
+    POINT(min(lat_n),min(long_w)),
+    POINT(max(lat_n),max(long_w))
+    
+),4)
+
+from 
+station;
+
+================================================================================================================================================================================================================
+38) Weather Observation Station 20
+   A median is defined as a number separating the higher half of a data set from the lower half. Query the median of the Northern Latitudes (LAT_N) from STATION and round your answer to  decimal places.
+
+Input Format
+
+The STATION table is described as follows:
+
+SELECT ROUND(LAT_N,4) FROM STATION ORDER BY LAT_N LIMIT 249,1;
+
+================================================================================================================================================================================================================
